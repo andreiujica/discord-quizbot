@@ -3,14 +3,17 @@ import requests
 import json
 import asyncio
 
-client = discord.Client()
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = discord.Client(intents=intents)
 
 
 def get_question():
     qs = ''
     id = 1
     answer = 0
-    response = requests.get("https://mysterious-fjord-93163.herokuapp.com/api/random/")
+    response = requests.get("http://127.0.0.1:8000/api/random/")
     json_data = json.loads(response.text)
     qs += "Question: \n"
     qs += json_data[0]['title'] + "\n"
@@ -48,4 +51,4 @@ async def on_message(message):
         else:
             await message.channel.send('Oops. That is not right')
         
-client.run('MTAxODEzNzEwODE5NzY4NzQyNg.GeZEVk.5VayWK81AgcCRE7Rg5rYNHNZn2UtzQpyXINOAw')
+client.run('MTAxODEzNzEwODE5NzY4NzQyNg.G29aKs.mRDO1jhDLwYHsf0MCVKgOl2U0tOxNcBBvXfu84')
