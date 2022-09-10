@@ -2,6 +2,7 @@ import discord
 import requests
 import json
 import asyncio
+from decouple import config
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -51,4 +52,4 @@ async def on_message(message):
         else:
             await message.channel.send('Oops. That is not right')
         
-client.run('MTAxODEzNzEwODE5NzY4NzQyNg.G29aKs.mRDO1jhDLwYHsf0MCVKgOl2U0tOxNcBBvXfu84')
+client.run(config("BOT_TOKEN"))
